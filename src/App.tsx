@@ -5,6 +5,7 @@ import { Hero } from './components/pages/Hero';
 import { About } from './components/pages/About';
 import { Skills } from './components/pages/Skills';
 import { Projects } from './components/pages/Projects';
+import { Contact } from './components/pages/Contact';
 import { pageVariants, pageTransition } from './utils/animations';
 import type { PageName } from './types';
 
@@ -25,6 +26,8 @@ function App() {
         return <Skills key="skills" onNavigate={handleNavigate} />;
       case 'projects':
         return <Projects key="projects" onNavigate={handleNavigate} />;
+      case 'contact':
+        return <Contact key="contact" onNavigate={handleNavigate} />;
       // other pages will be cases here
       default:
         return <Hero key="hero" onNavigate={handleNavigate} />;
