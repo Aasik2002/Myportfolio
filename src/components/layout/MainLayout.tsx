@@ -5,7 +5,7 @@ interface MainLayoutProps {
     activePage: string;
 }
 
-export function MainLayout({ children, activePage }: MainLayoutProps) {
+export function MainLayout({ children }: MainLayoutProps) {
     return (
         <div className="relative w-full h-screen overflow-hidden bg-[#0A0A1A] text-white font-sans flex items-center justify-center">
             {/* Background stars or gradient based on Figma can go here */}
