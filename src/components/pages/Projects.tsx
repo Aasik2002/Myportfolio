@@ -62,11 +62,11 @@ export function Projects({ onNavigate }: ProjectsProps) {
                 transition={{ duration: 0.6 }}
                 className="w-full max-w-6xl flex flex-col mt-4 md:ml-16"
             >
-                <div className="mb-10 text-center md:text-left">
+                <div className="mb-10 text-center flex flex-col items-center">
                     <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                         Featured Projects
                     </h2>
-                    <p className="text-gray-400 mt-2 max-w-xl">
+                    <p className="text-gray-400 mt-2 max-w-xl text-center">
                         A selection of my recent works highlighting complex UI challenges and performance optimizations.
                     </p>
                 </div>

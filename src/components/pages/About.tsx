@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Download, FileText } from 'lucide-react';
 import { SideNav } from '../ui/SideNav';
 import type { PageName } from '../../types';
+import profileImage from '../../assets/Profile image.png';
 
 interface AboutProps {
     onNavigate: (page: PageName) => void;
@@ -66,8 +67,7 @@ export function About({ onNavigate }: AboutProps) {
                             className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-white/10 p-2 relative"
                         >
                             <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden relative">
-                                <span className="text-gray-500 text-sm z-10 text-center px-4">IMAGE<br />(To be uploaded by user)</span>
-                                {/* Optional: <img src="/assets/profile.jpg" alt="Ahemed Aasik" className="w-full h-full object-cover rounded-full absolute inset-0 z-20" /> */}
+                                <img src={profileImage} alt="Ahemed Aasik" className="w-full h-full object-cover object-top rounded-full absolute inset-0 z-20" />
                             </div>
                         </motion.div>
 
