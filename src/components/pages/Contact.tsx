@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
+import emailjs from '@emailjs/browser'; // EmailJS இம்போர்ட் செய்யப்பட்டது
 import { SideNav } from '../ui/SideNav';
 import { Magnetic } from '../ui/Magnetic';
 import type { PageName } from '../../types';
@@ -21,12 +22,29 @@ export function Contact({ onNavigate }: ContactProps) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        setTimeout(() => {
+
+        // EmailJS integration
+        emailjs.send(
+            'service_j8ma7t6',    // உனது Service ID
+            'YOUR_TEMPLATE_ID',   // உனது Template ID-ஐ இங்கே மாற்றவும்
+            {
+                name: formData.name,
+                email: formData.email,
+                service: formData.service,
+                message: formData.message,
+            },
+            'YOUR_PUBLIC_KEY'     // உனது Public Key-ஐ இங்கே மாற்றவும்
+        )
+        .then(() => {
             setIsSubmitting(false);
             setFormData({ name: '', email: '', service: '', message: '' });
-            alert('Message sent successfully!');
-        }, 1500);
+            alert('Message sent successfully to Ahmed Aasik! 🚀');
+        })
+        .catch((error) => {
+            setIsSubmitting(false);
+            console.error('EmailJS Error:', error);
+            alert('Failed to send message. Please try again.');
+        });
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -108,6 +126,7 @@ export function Contact({ onNavigate }: ContactProps) {
                                         name="service"
                                         value={formData.service}
                                         onChange={handleChange}
+                                        required
                                         className="w-full bg-[#8b93bc]/20 border-none rounded-xl px-4 py-3.5 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all font-outfit appearance-none"
                                     >
                                         <option value="" disabled className="text-gray-500 bg-[#1b1e3d]"></option>
@@ -115,7 +134,6 @@ export function Contact({ onNavigate }: ContactProps) {
                                         <option value="ui" className="text-white bg-[#1b1e3d]">UI/UX Design</option>
                                         <option value="app" className="text-white bg-[#1b1e3d]">Mobile App Development</option>
                                     </select>
-                                    {/* Arrow icon overlay */}
                                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
                                         <svg className="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" /></svg>
                                     </div>
@@ -159,14 +177,11 @@ export function Contact({ onNavigate }: ContactProps) {
 
                     {/* Right: Contact Info */}
                     <div className="flex-1 p-8 md:p-10 border-t md:border-t-0 md:border-l border-white/10 relative z-10 flex flex-col">
-
                         <div className="mb-10">
                             <h3 className="text-xl font-semibold text-[#6684ff] mb-6 font-space-grotesk tracking-wide">
                                 Contact Info
                             </h3>
-
                             <div className="space-y-5">
-                                {/* Phone */}
                                 <div>
                                     <p className="text-[15px] font-medium tracking-wide mb-1">
                                         <span className="text-white">Ph</span>
@@ -174,8 +189,6 @@ export function Contact({ onNavigate }: ContactProps) {
                                     </p>
                                     <p className="text-[15px] text-gray-300 font-outfit">+94 75 959 8913</p>
                                 </div>
-
-                                {/* Email */}
                                 <div>
                                     <p className="text-[15px] font-medium tracking-wide mb-1">
                                         <span className="text-white">E</span>
@@ -185,8 +198,6 @@ export function Contact({ onNavigate }: ContactProps) {
                                         ahamadaasik77@gmail.com
                                     </a>
                                 </div>
-
-                                {/* Location */}
                                 <div>
                                     <p className="text-[15px] font-medium tracking-wide mb-1">
                                         <span className="text-white">Loc</span>
@@ -201,9 +212,7 @@ export function Contact({ onNavigate }: ContactProps) {
                             <h3 className="text-xl font-semibold text-[#6684ff] mb-6 font-space-grotesk tracking-wide">
                                 Profile tools
                             </h3>
-
                             <div className="space-y-5">
-                                {/* Linkedin */}
                                 <div>
                                     <p className="text-[15px] font-medium tracking-wide mb-1">
                                         <span className="text-white">Link</span>
@@ -213,8 +222,6 @@ export function Contact({ onNavigate }: ContactProps) {
                                         linkedin.com/in/aasik2002
                                     </a>
                                 </div>
-
-                                {/* Github */}
                                 <div>
                                     <p className="text-[15px] font-medium tracking-wide mb-1">
                                         <span className="text-white">Git</span>
@@ -226,7 +233,6 @@ export function Contact({ onNavigate }: ContactProps) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </motion.div>
