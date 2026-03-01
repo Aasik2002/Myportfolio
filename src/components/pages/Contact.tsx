@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import emailjs from '@emailjs/browser'; // EmailJS இம்போர்ட் செய்யப்பட்டது
+import emailjs from '@emailjs/browser'; 
 import { SideNav } from '../ui/SideNav';
 import { Magnetic } from '../ui/Magnetic';
 import type { PageName } from '../../types';
@@ -25,16 +25,16 @@ export function Contact({ onNavigate }: ContactProps) {
 
         // EmailJS integration
         emailjs.send(
-            'service_j8ma7t6',    // உனது Service ID
-            'YOUR_TEMPLATE_ID',   // உனது Template ID-ஐ இங்கே மாற்றவும்
-            {
-                name: formData.name,
-                email: formData.email,
-                service: formData.service,
-                message: formData.message,
-            },
-            'YOUR_PUBLIC_KEY'     // உனது Public Key-ஐ இங்கே மாற்றவும்
-        )
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,   // இது Vercel-ல் உள்ள Service ID-ஐ எடுக்கும்
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  // இது Vercel-ல் உள்ள Template ID-ஐ எடுக்கும்
+    {
+        name: formData.name,
+        email: formData.email,
+        service: formData.service,
+        message: formData.message,
+    },
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY    // இது Vercel-ல் உள்ள Public Key-ஐ எடுக்கும்
+)
         .then(() => {
             setIsSubmitting(false);
             setFormData({ name: '', email: '', service: '', message: '' });
