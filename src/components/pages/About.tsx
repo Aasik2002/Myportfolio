@@ -10,14 +10,14 @@ interface AboutProps {
 
 export function About({ onNavigate }: AboutProps) {
     return (
-        <div className="w-full h-full flex items-center justify-center p-6 bg-gradient-to-br from-[#0A0A1A] to-[#12122A]">
+        <div className="w-full h-full flex items-start md:items-center justify-center p-6 py-24 md:py-6 bg-gradient-to-br from-[#0A0A1A] to-[#12122A] overflow-y-auto">
             <SideNav activePage="about" onNavigate={onNavigate} />
 
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="ml-0 md:ml-32 max-w-4xl w-full bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden"
+                className="ml-0 md:ml-32 max-w-4xl w-full bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden my-4 md:my-0"
             >
                 {/* Glow Effects */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
@@ -26,7 +26,7 @@ export function About({ onNavigate }: AboutProps) {
                 <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
                     {/* Left Text and Buttons */}
-                    <div className="space-y-6">
+                    <div className="space-y-6 text-center md:text-left flex flex-col items-center md:items-start">
                         <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
                             About Me
                         </h2>
@@ -36,7 +36,7 @@ export function About({ onNavigate }: AboutProps) {
                             I specialize in Front-End Development, building responsive and interactive web applications using React.js, TypeScript, and Tailwind CSS. My technical skills are backed by a strong understanding of UI/UX design...
                         </p>
 
-                        <div className="pt-4 flex flex-wrap gap-4">
+                        <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-4">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

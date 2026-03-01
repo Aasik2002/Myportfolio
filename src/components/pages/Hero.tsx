@@ -107,7 +107,7 @@ export function Hero({ onNavigate }: HeroProps) {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="flex-1 flex flex-col items-start justify-center mt-20 md:mt-0 text-left space-y-4 z-10"
             >
-                <h2 className="text-xl md:text-2xl text-blue-400 font-medium">Hey I'm,</h2>
+                <h2 className="text-xl md:text-2xl text-blue-400 font-medium mt-8 md:mt-0">Hey I'm,</h2>
                 <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 tracking-tight">
                     Ahemed Aasik
                 </h1>
@@ -132,7 +132,7 @@ export function Hero({ onNavigate }: HeroProps) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.3, type: "spring" }}
-                className="flex-1 flex items-center justify-center mt-12 md:mt-0 z-10"
+                className="flex-1 flex items-center justify-center mt-2 md:mt-0 z-10"
             >
                 <CircularNav activePage="hero" onNavigate={onNavigate} />
             </motion.div>
